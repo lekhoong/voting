@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\VoteController;
+
+Route::get('/votes', [VoteController::class, 'index'])->name('index');
+Route::post('/votes', [VoteController::class, 'submit'])->name('submit');
+Route::get('/votes/results', [VoteController::class, 'result'])->name('results');
+
